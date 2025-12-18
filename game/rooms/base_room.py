@@ -249,7 +249,7 @@ class BaseRoom:
         Алгоритм поиска музыки:
         1. Ищет файлы с именами, соответствующими названию комнаты
         2. Если не находит - ищет общие фоновые музыкальные файлы
-        3. Поддерживает форматы: .mp3, .wav, .ogg
+        3. Поддерживает форматы: .mp3
         
         Примеры имен файлов для комнаты "Hall":
         - hall.mp3, hall_music.mp3, hall-bg.mp3, hall_bg.mp3
@@ -278,7 +278,7 @@ class BaseRoom:
                 ]
                 
                 # Ищем файлы, соответствующие шаблонам
-                all_files = [f for f in os.listdir(music_dir) if f.endswith(('.mp3', '.wav', '.ogg'))]
+                all_files = [f for f in os.listdir(music_dir) if f.endswith(('.mp3'))]
                 
                 for file in all_files:
                     file_lower = file.lower()
@@ -290,7 +290,7 @@ class BaseRoom:
                 
                 # Если не найдена специфичная музыка, ищем общую фоновую музыку
                 if not music_files:
-                    general_music = [f for f in all_files if 'background' in f.lower() or 'bg' in f.lower()]
+                    general_music = [f for f in all_files if 'background' in f.lower()]
                     if general_music:
                         music_files = [os.path.join(music_dir, f) for f in general_music]
             
